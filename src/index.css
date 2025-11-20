@@ -34,3 +34,24 @@
 .sample-btn:hover {
   background: #ddd;
 }
+
+.add-remove-btn {
+  background: #4c82ff;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 10px;
+
+  font-size: 15px;
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.add-remove-btn:hover {
+  background: #3a6be6;
+}
+
+.add-remove-btn:active {
+  transform: scale(0.96);
+}
