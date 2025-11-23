@@ -1,18 +1,15 @@
+import { useSamples } from "../context/SampleContext";
 import ColumnsCreator from "./ColumnCreator";
 
-type GridProps = {
-  files: string[];
-  columns: number;
-};
-
-export default function Grid({ files, columns }: GridProps) {
+export default function Grid() {
+  const { samples, columns } = useSamples();
   return (
     <div
       className="grid"
       style={{ gridTemplateColumns: `repeat(${columns},60px)` }}
     >
       {Array.from({ length: columns }).map((_, index) => (
-        <ColumnsCreator key={index} files={files} />
+        <ColumnsCreator key={index} samples={samples} />
       ))}
     </div>
   );

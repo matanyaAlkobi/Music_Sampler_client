@@ -1,12 +1,13 @@
+import * as Tone from "tone";
 type SampleButtonProps = {
   sample: string;
 };
 
 export default function SampleButton({ sample }: SampleButtonProps) {
-  const playSample = () => {
-    const audio = new Audio(`./piano/${sample}`);
-    audio.currentTime = 0;
-    audio.play();
+  const playSample = async () => {
+    await Tone.start();
+    const player = new Tone.Player(`/piano/${sample}`).toDestination();
+    player.autostart = true;
   };
 
   return (

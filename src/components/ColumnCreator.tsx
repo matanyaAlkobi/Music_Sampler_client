@@ -1,14 +1,12 @@
 import SampleButton from "./SampleButton";
 
-type ColumnProps = {
-  files: string[];
-};
+type ColumnProps = { samples: string[] };
 
-export default function ColumnsCreator({ files }: ColumnProps) {
+export default function ColumnsCreator({ samples }: ColumnProps) {
   return (
     <div className="column">
-      {files.map((file, index) => (
-        <SampleButton key={index} sample={file} />
+      {samples.map((sample, i) => (
+        <SampleButton key={i} sample={sample} />
       ))}
     </div>
   );

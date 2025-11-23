@@ -1,20 +1,12 @@
-import { useState } from "react";
+import { useSamples } from "../context/SampleContext";
 import Grid from "./Grid";
 
 export default function Sampler() {
-  const files: string[] = [
-    "A.wav",
-    "B.wav",
-    "C.wav",
-    "D.wav",
-    "E.wav",
-    "F.wav",
-    "G.wav",
-  ];
-  const [columns, setColumns] = useState<number>(5);
+  const { columns, setColumns } = useSamples();
 
   return (
     <>
+    
       <div>
         <button
           className="add-remove-btn"
@@ -31,7 +23,7 @@ export default function Sampler() {
           </button>
         )}
       </div>
-      <Grid files={files} columns={columns} />
+      <Grid/>
     </>
   );
 }
