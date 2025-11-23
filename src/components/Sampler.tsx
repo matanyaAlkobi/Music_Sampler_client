@@ -1,12 +1,11 @@
 import { useSamples } from "../context/SampleContext";
 import Grid from "./Grid";
 
-export default function Sampler() {
+export default function SamplerGrid() {
   const { columns, setColumns } = useSamples();
 
   return (
     <>
-    
       <div>
         <button
           className="add-remove-btn"
@@ -14,7 +13,7 @@ export default function Sampler() {
         >
           add column
         </button>
-        {columns >= 1 && (
+        {columns >= 2 && (
           <button
             className="add-remove-btn"
             onClick={() => setColumns(columns - 1)}
@@ -23,7 +22,7 @@ export default function Sampler() {
           </button>
         )}
       </div>
-      <Grid/>
+      <Grid />
     </>
   );
 }
