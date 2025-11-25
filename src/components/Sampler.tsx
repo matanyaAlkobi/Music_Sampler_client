@@ -1,5 +1,6 @@
 import { useSamples } from "../context/SampleContext";
 import Grid from "./Grid";
+import PlayButton from "./PlayButton";
 
 export default function SamplerGrid() {
   const { columns, setColumns } = useSamples();
@@ -21,6 +22,7 @@ export default function SamplerGrid() {
             remove column
           </button>
         )}
+        <PlayButton />
       </div>
       <Grid />
     </>

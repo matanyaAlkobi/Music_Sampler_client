@@ -1,12 +1,17 @@
+import { useSamples } from "../context/SampleContext";
 import SampleButton from "./SampleButton";
 
-type ColumnProps = { samples: string[] };
-
-export default function ColumnsCreator({ samples }: ColumnProps) {
+export default function ColumnsCreator({ colIndex }: { colIndex: number }) {
+  const { samples, activeColumns, toggleCell } = useSamples();
   return (
     <div className="column">
-      {samples.map((sample, i) => (
-        <SampleButton key={i} sample={sample} />
+      {samples.map((sample, rowIndex) => (
+        <SampleButton
+          key={rowIndex}
+          sample={sample}
+          active={activeColumns[colIndex]?.[rowIndex]}
+          onToggle={() => toggleCell(colIndex, rowIndex)}
+        />
       ))}
     </div>
   );
