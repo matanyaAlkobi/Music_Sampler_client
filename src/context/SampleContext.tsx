@@ -1,53 +1,61 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import type { ReactNode } from "react";
+import * as Tone from "tone";
 
 type SampleContextType = {
   samples: string[];
   columns: number;
   setColumns: (n: number) => void;
-  setSamples: (arr: string[]) => void;
   activeColumns: boolean[][];
   toggleCell: (col: number, row: number) => void;
+  players: Tone.Player[];
 };
 
 const SampleContext = createContext<SampleContextType | undefined>(undefined);
 
 export const useSamples = () => {
   const context = useContext(SampleContext);
-  if (!context) throw new Error("useSamples must be used within SampleProvider");
+  if (!context)
+    throw new Error("useSamples must be used within SampleProvider");
   return context;
 };
 
 type SampleProviderProps = { children: ReactNode };
 
 export const SampleProvider = ({ children }: SampleProviderProps) => {
-  const [samples, setSamples] = useState<string[]>([
+  const [samples, setSamples] = useState([
     "A.wav",
     "B.wav",
     "C.wav",
     "D.wav",
     "E.wav",
-    "F.wav",
-    "G.wav",
   ]);
-  const [columns, setColumns] = useState<number>(2);
-
-  const [activeColumns, setActiveColumns] = useState<boolean[][]>(
+  const [columns, setColumns] = useState(4);
+  const [activeColumns, setActiveColumns] = useState(
     Array.from({ length: columns }, () => Array(samples.length).fill(false))
   );
+  const [players, setPlayers] = useState<Tone.Player[]>([]);
 
+  // Load Tone.Player for each sample (row)
   useEffect(() => {
-    setActiveColumns(prev => {
-      const newState = Array.from({ length: columns }, (_, colIndex) =>
+    const newPlayers = samples.map((s) =>
+      new Tone.Player(`/piano/${s}`).toDestination()
+    );
+    setPlayers(newPlayers);
+  }, [samples]);
+
+  // Update activeColumns when columns change
+  useEffect(() => {
+    setActiveColumns((prev) =>
+      Array.from({ length: columns }, (_, colIndex) =>
         prev[colIndex] ? [...prev[colIndex]] : Array(samples.length).fill(false)
-      );
-      return newState;
-    });
+      )
+    );
   }, [columns, samples.length]);
 
   const toggleCell = (col: number, row: number) => {
-    setActiveColumns(prev => {
-      const newState = prev.map(c => [...c]);
+    setActiveColumns((prev) => {
+      const newState = prev.map((c) => [...c]);
       newState[col][row] = !newState[col][row];
       return newState;
     });
@@ -55,7 +63,14 @@ export const SampleProvider = ({ children }: SampleProviderProps) => {
 
   return (
     <SampleContext.Provider
-      value={{ samples, columns, setColumns, setSamples, activeColumns, toggleCell }}
+      value={{
+        samples,
+        columns,
+        setColumns,
+        activeColumns,
+        toggleCell,
+        players,
+      }}
     >
       {children}
     </SampleContext.Provider>
