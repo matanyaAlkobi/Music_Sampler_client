@@ -10,12 +10,11 @@ export default function SampleButton({
   active,
   onToggle,
 }: SampleButtonProps) {
-
   const handleClick = async () => {
     onToggle();
     if (!active) {
       await Tone.start();
-      const player = new Tone.Player(`/piano/${sample}`).toDestination();
+      const player = new Tone.Player(sample).toDestination();
       player.autostart = true;
     }
   };
@@ -26,7 +25,7 @@ export default function SampleButton({
       onClick={handleClick}
       style={{ background: active ? "red" : "#eee" }}
     >
-      {sample.replace(".wav", "")}
+      {sample.split("/").pop()?.replace(".wav", "")}{" "}
     </button>
   );
 }

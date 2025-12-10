@@ -3,6 +3,9 @@ import SampleButton from "./SampleButton";
 
 export default function ColumnsCreator({ colIndex }: { colIndex: number }) {
   const { samples, activeColumns, toggleCell } = useSamples();
+
+  if (samples.length === 0) return <p>Loading samples...</p>;
+
   return (
     <div className="column">
       {samples.map((sample, rowIndex) => (
