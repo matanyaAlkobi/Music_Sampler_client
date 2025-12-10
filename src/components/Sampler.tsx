@@ -1,5 +1,6 @@
 import { useSamples } from "../context/SampleContext";
 import Grid from "./Grid";
+import InstrumentSelector from "./InstrumentSelector";
 import Buttons from "./buttons/Buttons";
 
 export default function SamplerGrid() {
@@ -7,6 +8,7 @@ export default function SamplerGrid() {
 
   return (
     <>
+    <InstrumentSelector/>
       <div>
         <button
           className="add-remove-btn"
