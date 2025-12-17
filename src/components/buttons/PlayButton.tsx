@@ -66,9 +66,9 @@ export default function PlayButton() {
   };
 
   return (
-    <div style={{ display: "flex", gap: "10px" }}>
-      <button onClick={handlePlayPause}>{isPlaying ? "Pause" : "Play"}</button>
-      <button onClick={handleStop}>Stop</button>
+    <div className="play-controls">
+      <button className="play-btn" onClick={handlePlayPause}>{isPlaying ? "Pause" : "Play"}</button>
+      <button className="stop-btn" onClick={handleStop}>Stop</button>
     </div>
   );
 }

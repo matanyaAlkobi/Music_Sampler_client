@@ -11,7 +11,7 @@ export default function BpmControl() {
   };
 
   return (
-    <div>
+    <div className="bpm-control">
       <label>
         BPM: {bpm}
         <input

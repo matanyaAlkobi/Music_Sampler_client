@@ -8,8 +8,11 @@ export default function SamplerGrid() {
 
   return (
     <>
-    <InstrumentSelector/>
-      <div>
+      <div className="instrument-section">
+        <InstrumentSelector />
+      </div>
+
+      <div className="column-controls">
         <button
           className="add-remove-btn"
           onClick={() => setColumns(columns + 1)}
@@ -26,7 +29,9 @@ export default function SamplerGrid() {
         )}
       </div>
       <Grid />
-      <Buttons />
+      <div className="control-buttons">
+        <Buttons />
+      </div>
     </>
   );
 }

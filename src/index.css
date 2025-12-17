@@ -1,56 +1,214 @@
-.app {
-  text-align: center;
-  font-family: sans-serif;
-}
-
-.grid {
-  display: grid;
-  gap: 0.2rem;
+/* Global Layout */
+body {
+  margin: 0;
+  background: #f1f3f6;
+  font-family: "Inter", Arial, sans-serif;
+  color: #222;
+  display: flex;
   justify-content: center;
-  margin-top: 0.5rem;
 }
 
-.column {
+.app-container {
+  width: 100%;
+  max-width: 850px;
+  margin: 0 auto;
+  padding: 30px 20px;
   display: flex;
   flex-direction: column;
-  gap: 0.1rem;
+  align-items: center;
 }
 
-.sample-btn {
-  width: 60px;
-  height: 60px;
-  border: 1px solid #bbb;
-  border-radius: 1rem;
-  cursor: pointer;
-  transition: 0.2s;
+.app-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 25px;
+  color: #333;
+  font-weight: 700;
+}
 
+/* Instrument selector */
+.instrument-section {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Column Controls (Add/Remove) */
+.column-controls {
   display: flex;
   justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.sample-btn:hover {
-  background: #ddd;
+  gap: 15px;
+  margin-bottom: 15px;
 }
 
 .add-remove-btn {
-  background: #4c82ff;
+  padding: 8px 14px;
+  background: #4a6cff;
   color: white;
   border: none;
-  padding: 0.6rem 1.2rem;
-  border-radius: 10px;
-
-  font-size: 15px;
+  border-radius: 6px;
   cursor: pointer;
-
-  transition: 0.2s ease;
+  font-weight: 500;
+  transition: 0.2s;
 }
 
 .add-remove-btn:hover {
-  background: #3a6be6;
+  background: #3855e0;
 }
 
-.add-remove-btn:active {
-  transform: scale(0.96);
+/* Grid */
+.grid-container {
+  display: grid;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px auto;
+}
+
+.grid-column {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Sample Buttons */
+.sample-btn {
+  padding: 12px;
+  background: #e9e9e9;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.2s;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.sample-btn:hover {
+  background: #d0d0d0;
+  transform: scale(1.04);
+}
+
+.sample-btn-active {
+  background: #ff5858 !important;
+  color: white;
+  box-shadow: 0 2px 8px rgba(255, 50, 50, 0.4);
+}
+
+/* Bottom Controls Section */
+.buttons-container {
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+}
+
+.buttons-wrapper {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Play / Stop Buttons */
+.play-controls {
+  display: flex;
+  gap: 10px;
+}
+
+.play-btn,
+.stop-btn {
+  padding: 10px 16px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+.play-btn {
+  background: #00cb80;
+  color: white;
+}
+
+.play-btn:hover {
+  background: #00a86a;
+}
+
+.stop-btn {
+  background: #ff4747;
+  color: white;
+}
+
+.stop-btn:hover {
+  background: #e43434;
+}
+
+/* Volume  */
+.volume-control {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* BPM Control */
+.bpm-control {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bpm-label {
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.bpm-value {
+  color: #4a6cff;
+  font-weight: 700;
+}
+
+.bpm-slider {
+  width: 160px;
+  -webkit-appearance: none;
+  height: 6px;
+  background: #cdd3e0;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.bpm-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  background: #4a6cff;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.bpm-slider::-webkit-slider-thumb:hover {
+  background: #384fc9;
+}
+
+
+/* --------------------------------------------------
+   grid-scroll-wrapper
+-------------------------------------------------- */
+.grid-scroll-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  padding-bottom: 10px;
+}
+
+.grid-scroll-wrapper::-webkit-scrollbar {
+  height: 8px;
+}
+
+.grid-scroll-wrapper::-webkit-scrollbar-thumb {
+  background: #b4b4b4;
+  border-radius: 8px;
+}
+
+.grid-scroll-wrapper::-webkit-scrollbar-track {
+  background: #e3e3e3;
 }

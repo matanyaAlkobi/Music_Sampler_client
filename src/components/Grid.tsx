@@ -7,13 +7,15 @@ export default function Grid() {
   if (samples.length === 0) return <p>Loading samples...</p>;
 
   return (
-    <div
-      className="grid"
-      style={{ gridTemplateColumns: `repeat(${columns},60px)` }}
-    >
-      {Array.from({ length: columns }).map((_, index) => (
-        <ColumnsCreator key={index} colIndex={index} />
-      ))}
+    <div className="grid-scroll-wrapper">
+      <div
+        className="grid-container"
+        style={{ gridTemplateColumns: `repeat(${columns},60px)` }}
+      >
+        {Array.from({ length: columns }).map((_, index) => (
+          <ColumnsCreator key={index} colIndex={index} />
+        ))}
+      </div>
     </div>
   );
 }
