@@ -11,7 +11,7 @@ export default function VolumeControl() {
   };
 
   return (
-    <div>
+    <div className="volume-control">
       <label>
         Volume: {volume} dB
         <input

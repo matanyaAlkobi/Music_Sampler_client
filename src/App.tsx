@@ -4,7 +4,7 @@ import { SampleProvider } from "./context/SampleContext";
 export default function App() {
   return (
     <SampleProvider>
-      <div className="app">
+      <div className="app-container">
         <h1>Music Sampler</h1>
         <Sampler />
       </div>

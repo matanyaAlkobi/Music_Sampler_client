@@ -25,7 +25,8 @@ export default function SampleButton({
       onClick={handleClick}
       style={{ background: active ? "red" : "#eee" }}
     >
-      {sample.split("/").pop()?.replace(".wav", "")}{" "}
+      {sample.split("/").pop()?.replace(/\.[^/.]+$/, "")}
+
     </button>
   );
 }

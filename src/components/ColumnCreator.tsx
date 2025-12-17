@@ -7,7 +7,7 @@ export default function ColumnsCreator({ colIndex }: { colIndex: number }) {
   if (samples.length === 0) return <p>Loading samples...</p>;
 
   return (
-    <div className="column">
+    <div className="grid-column">
       {samples.map((sample, rowIndex) => (
         <SampleButton
           key={rowIndex}
